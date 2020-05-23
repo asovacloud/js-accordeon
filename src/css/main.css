@@ -3,14 +3,22 @@ body {
   font: 1rem/1.6 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-.wrapper {
+.wrapper { 
   margin: 0 auto;
   padding: 60px 40px;
   max-width: 800px;
 }
 
 h1 {
-  margin: 0 0 30px;
+  margin: 0 0 10px;
+}
+
+.accordion__item .accordion__button {
+  border-top: 1px solid #6580B2;
+}
+
+.accordion__item:first-child .accordion__button {
+  border: none;
 }
 
 .accordion__content {
@@ -21,7 +29,8 @@ h1 {
 }
 
 .accordion__button {
-  display: block;
+  display: flex;
+  align-items: center;
   height: 40px;
   border: none;
   background-color: cornflowerblue;
@@ -32,17 +41,32 @@ h1 {
   color: white;
   display: flex;
   transition: background-color 0.3s ease-in-out;
+  outline: none;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.4);
 }
 
 .accordion__button:after {
-  content: '+';
+  content: '';
   margin-left: auto;
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: url(../image/arrow.svg) no-repeat 100% 100%;
+  background-size: 100% 100%;
+  position: relative;
+  top: 2px;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
 }
 
-.accordion__button.is-open::after {
-  content: '-';
+.is-open .accordion__button:after {
+  transform: rotate(-180deg);
+  top: -1px;
 }
 
 .accordion__button:hover {
+  background-color: #214B9A;
+}
+
+.is-open .accordion__button {
   background-color: #214B9A;
 }
