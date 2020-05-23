@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font: 1rem/1.6 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font: 0.8rem/1.6 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 .wrapper { 
@@ -20,6 +20,14 @@ h1 {
   box-shadow: 5px 5px 15px rgba(0,0,0,0.1), -5px -5px 10px rgba(0,0,0,0.07);
 }
 
+.accordion p {
+  margin: 0 0 16px;
+}
+
+.accordion p:last-child {
+  margin: 0;
+}
+
 .accordion__item .accordion__button {
   border-top: 1px solid #6580B2;
 }
@@ -29,19 +37,21 @@ h1 {
 }
 
 .accordion__content {
-  padding: 0 20px;
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.3s ease-in-out;
 }
 
+.accordion__content-holder {
+  padding: 20px;
+}
+
 .accordion__button {
-  display: flex;
-  align-items: center;
-  height: 40px;
+  position: relative;
+  min-height: 42px;
   border: none;
   background-color: cornflowerblue;
-  padding: 0 10px;
+  padding: 5px 50px 5px 10px;
   width: 100%;
   cursor: pointer;
   text-align: left;
@@ -54,20 +64,21 @@ h1 {
 
 .accordion__button:after {
   content: '';
-  margin-left: auto;
-  display: block;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
   width: 15px;
   height: 15px;
   background: url(../image/arrow.svg) no-repeat 100% 100%;
   background-size: 100% 100%;
-  position: relative;
-  top: 2px;
-  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+  margin-top: 2px;
+  transition: transform 0.3s ease-in-out, margin-top 0.3s ease-in-out;
 }
 
 .is-open .accordion__button:after {
-  transform: rotate(-180deg);
-  top: -1px;
+  transform: rotate(-180deg) translateY(50%);
+  margin-top: -1px;
 }
 
 .accordion__button:hover {
@@ -76,4 +87,14 @@ h1 {
 
 .is-open .accordion__button {
   background-color: #214B9A;
+}
+
+@media (max-width: 767.98px) {
+  .wrapper {
+    padding: 25px 20px;
+  }
+
+  .accordion__content-holder {
+    padding: 15px;
+  }
 }
